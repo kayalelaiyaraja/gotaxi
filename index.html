@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Taxi Booking and Fare Management System">
+    <title>Voyage | Taxi Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <a href="#" class="logo">VOYAGE<span>.</span></a>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#booking">Booking</a>
+        <a href="#management">Management</a>
+        <a href="#reports">Reports</a>
+    </nav>
+    <a href="#booking" class="nav-btn">Book a Taxi ↗</a>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <span class="eyebrow">SMART TAXI MANAGEMENT</span>
+        <h1>Your Journey.<br><span>Our Responsibility.</span></h1>
+        <p>Manage drivers, vehicles, bookings and fares with one simple and intelligent taxi management platform.</p>
+        <div class="hero-actions">
+            <a href="#booking" class="primary-btn">Create Booking ↗</a>
+            <a href="#dashboard" class="secondary-btn">Explore Dashboard</a>
+        </div>
+        <div class="hero-stats">
+            <div><strong id="heroBookings">0</strong><small>Total Bookings</small></div>
+            <div><strong id="heroDrivers">0</strong><small>Registered Drivers</small></div>
+            <div><strong id="heroVehicles">0</strong><small>Available Vehicles</small></div>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <div class="hero-card">
+            <div class="car-icon">🚕</div>
+            <span class="live-tag">● SYSTEM ONLINE</span>
+            <h3>Travel Made Simple</h3>
+            <p>Reliable rides. Smarter management.</p>
+            <div class="route-line">
+                <span>●</span> Pickup Location
+                <hr>
+                <span>●</span> Destination
+            </div>
+        </div>
+    </div>
+</section>
+
+<main class="container">
+
+<section id="dashboard" class="section">
+    <div class="section-heading">
+        <div>
+            <span class="eyebrow">OVERVIEW</span>
+            <h2>Dashboard</h2>
+            <p>Your taxi business at a glance.</p>
+        </div>
+        <span class="status">● Live Dashboard</span>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <span>Total Bookings</span>
+            <h3 id="totalBookings">0</h3>
+            <small>All recorded bookings</small>
+        </div>
+        <div class="stat-card">
+            <span>Registered Drivers</span>
+            <h3 id="totalDrivers">0</h3>
+            <small>Driver database</small>
+        </div>
+        <div class="stat-card">
+            <span>Total Vehicles</span>
+            <h3 id="totalVehicles">0</h3>
+            <small>Vehicle database</small>
+        </div>
+        <div class="stat-card">
+            <span>Completed Trips</span>
+            <h3 id="completedTrips">0</h3>
+            <small>Successfully completed</small>
+        </div>
+    </div>
+</section>
+
+<section id="booking" class="section">
+    <div class="section-heading">
+        <div>
+            <span class="eyebrow">CUSTOMER SERVICE</span>
+            <h2>Book Your Taxi</h2>
+            <p>Enter the details to create a new booking.</p>
+        </div>
+    </div>
+
+    <div class="panel">
+        <form id="bookingForm" class="form-grid">
+            <div class="field">
+                <label>Customer Name</label>
+                <input id="customerName" type="text" placeholder="Enter customer name" required>
+            </div>
+            <div class="field">
+                <label>Phone Number</label>
+                <input id="customerPhone" type="tel" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number" required>
+            </div>
+            <div class="field">
+                <label>Pickup Location</label>
+                <input id="pickup" type="text" placeholder="Enter pickup location" required>
+            </div>
+            <div class="field">
+                <label>Drop Location</label>
+                <input id="drop" type="text" placeholder="Enter destination" required>
+            </div>
+            <div class="field">
+                <label>Travel Distance (KM)</label>
+                <input id="distance" type="number" min="0.1" step="0.1" placeholder="Enter distance" required>
+            </div>
+            <div class="field">
+                <label>Vehicle Category</label>
+                <select id="vehicleCategory" required>
+                    <option value="">Select category</option>
+                    <option value="Mini">Mini - ₹12/KM</option>
+                    <option value="Sedan">Sedan - ₹16/KM</option>
+                    <option value="SUV">SUV - ₹22/KM</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Additional Charges (₹)</label>
+                <input id="extraCharge" type="number" min="0" value="0" required>
+            </div>
+            <div class="field">
+                <label>Assign Driver</label>
+                <select id="assignDriver">
+                    <option value="">No driver assigned</option>
+                </select>
+            </div>
+            <div class="field full">
+                <div class="fare-preview">
+                    <span>Estimated Fare</span>
+                    <strong id="farePreview">₹0.00</strong>
+                </div>
+            </div>
+            <div class="field full">
+                <button type="submit" class="primary-btn">Confirm Booking ↗</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<section id="management" class="section">
+    <div class="section-heading">
+        <div>
+            <span class="eyebrow">ADMINISTRATION</span>
+            <h2>Management Center</h2>
+            <p>Manage your drivers and vehicles.</p>
+        </div>
+    </div>
+
+    <div class="management-grid">
+        <div class="panel">
+            <h3>Driver Registration</h3>
+            <form id="driverForm">
+                <div class="field">
+                    <label>Driver Name</label>
+                    <input id="driverName" type="text" placeholder="Driver name" required>
+                </div>
+                <div class="field">
+                    <label>Phone Number</label>
+                    <input id="driverPhone" type="tel" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit number" required>
+                </div>
+                <div class="field">
+                    <label>Driving Licence Number</label>
+                    <input id="driverLicence" type="text" placeholder="Licence number" required>
+                </div>
+                <button class="primary-btn full-btn" type="submit">Register Driver +</button>
+            </form>
+        </div>
+
+        <div class="panel">
+            <h3>Vehicle Management</h3>
+            <form id="vehicleForm">
+                <div class="field">
+                    <label>Vehicle Number</label>
+                    <input id="vehicleNumber" type="text" placeholder="TN 00 AB 1234" required>
+                </div>
+                <div class="field">
+                    <label>Vehicle Model</label>
+                    <input id="vehicleModel" type="text" placeholder="Enter model" required>
+                </div>
+                <div class="field">
+                    <label>Vehicle Category</label>
+                    <select id="vehicleType" required>
+                        <option value="">Select category</option>
+                        <option>Mini</option>
+                        <option>Sedan</option>
+                        <option>SUV</option>
+                    </select>
+                </div>
+                <button class="primary-btn full-btn" type="submit">Add Vehicle +</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="panel table-panel">
+        <h3>Registered Drivers</h3>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Name</th><th>Phone</th><th>Licence</th><th>Action</th></tr>
+                </thead>
+                <tbody id="driverTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel table-panel">
+        <h3>Vehicle Records</h3>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Number</th><th>Model</th><th>Category</th><th>Action</th></tr>
+                </thead>
+                <tbody id="vehicleTable"></tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section id="reports" class="section">
+    <div class="section-heading">
+        <div>
+            <span class="eyebrow">TRIP MANAGEMENT</span>
+            <h2>Trip History & Reports</h2>
+            <p>Track bookings and manage trip status.</p>
+        </div>
+    </div>
+
+    <div class="panel table-panel">
+        <div class="table-title">
+            <h3>All Bookings</h3>
+            <button id="exportBtn" class="secondary-btn">Export CSV ↓</button>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Route</th>
+                        <th>Distance</th>
+                        <th>Category</th>
+                        <th>Driver</th>
+                        <th>Fare</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="bookingTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel report-panel">
+        <h3>Driver-wise Trip Summary</h3>
+        <div id="driverReports" class="report-list">
+            <p>No driver reports available yet.</p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <a href="#" class="logo">VOYAGE<span>.</span></a>
+    <p>Smart journeys. Smarter management.</p>
+    <small>© 2026 Taxi Booking and Fare Management System</small>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
