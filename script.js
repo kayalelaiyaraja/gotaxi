@@ -1,5 +1,5 @@
 // ======================================
-// VOYAGE - TAXI MANAGEMENT SYSTEM
+// GoTaxi - TAXI MANAGEMENT SYSTEM
 // ======================================
 
 const RATES = {
